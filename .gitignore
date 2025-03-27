@@ -13,3 +13,5 @@ dist/
 .idea
 
 docs/.vitepress/cache
+
+storybook-static

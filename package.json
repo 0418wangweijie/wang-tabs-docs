@@ -21,6 +21,7 @@
     "@storybook/react": "^8.6.10",
     "@storybook/react-vite": "^8.6.10",
     "@storybook/test": "^8.6.10",
+    "dotenv": "^16.4.7",
     "mermaid": "^11.6.0",
     "prop-types": "^15.8.1",
     "storybook": "^8.6.10",
@@ -31,6 +32,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "vite": "^6.2.3",
     "wang-tabs": "^1.1.0"
   }
 }

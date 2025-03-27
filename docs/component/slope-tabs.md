@@ -144,9 +144,13 @@ const SlopeTabsDemo = () => {
 
 export default SlopeTabsDemo
 ```
+测试
+{ import.meta.env.VITE_DEV }
+
+
 
 <iframe
-src="http://localhost:6006/iframe.html?globals=viewport%3Amobile&viewMode=story&id=slopetabs--primary"
+src="{{VITE_API_STORYBOOK_URL}}/iframe.html?globals=viewport%3Amobile&viewMode=story&id=slopetabs--primary"
 style="width: 100%; height:600px; border: none"
 title="SlopeTabs 演示"
 > 
