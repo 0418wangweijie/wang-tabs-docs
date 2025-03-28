@@ -1,0 +1,181 @@
+# ElevatedSlopeTabs
+
+带有提升效果的线性渐变选项卡组件，支持响应式布局和主题定制。
+
+## 🌐 组件概述
+
+| 特性             | 描述                    |
+|----------------|-----------------------|
+| **动画效果**       | CSS 过渡动画实现平滑切换效果      |
+| **响应式**        | 基于 Rem 单位和弹性布局，适配多端设备 |
+| **可配置**        | 支持主题色、圆角、间距等样式配置      |
+| **TypeScript** | 完整类型定义，确保代码安全         |
+| **提升效果**     | 带有阴影和提升效果的选项卡          |
+
+## 📱 使用场景
+
+- **内容切换**：适用于需要在不同内容块之间切换的场景
+- **步骤引导**：配合 `steps` 组件实现分步引导
+- **标签导航**：作为底部或侧边栏的导航标签
+
+## 🚀 基础用法
+
+```tsx
+import { ElevatedSlopeTabs, Tab } from 'wang-tabs';
+
+const tabs: Tab[] = [
+{ name: 'tab1', label: '标签 1' },
+{ name: 'tab2', label: '标签 2' },
+];
+
+<ElevatedSlopeTabs
+tabList={tabs}
+activeTab="tab1"
+onTabChange={(tab) => console.log(tab)}
+/>
+```
+## 📖 API 文档
+
+### Props
+
+| 参数名           | 类型                      | 默认值 | 描述      |
+|---------------|-------------------------|-----|---------|
+| `tabList`     | `Tab[]`                 | -   | 选项卡列表   |
+| `activeTab`   | `string`                | -   | 当前激活的标签 |
+| `onTabChange` | `(tab: string) => void` | -   | 标签切换回调  |
+| `style`       | `CSSProperties`         | -   | 容器样式    |
+| `rootStyle`   | `CSSProperties`         | -   | 根元素样式   |
+
+### CSS 变量
+
+| CSS 变量名          | 默认值      | 描述                     |
+|-------------------|-----------|------------------------|
+| `--tab-height`    | `152px`   | 选项卡高度                 |
+| `--active-color`  | `#4096ff` | 激活状态背景颜色             |
+| `--primary-color` | `#bae0ff` | 默认状态背景颜色             |
+| `--font-color`    | `#fff`    | 文字颜色                   |
+| `--border-radius` | `35px`    | 圆角大小                  |
+| `--font-size`     | `44px`    | 文字大小                  |
+| `--shadow-color`  | `rgba(0, 0, 0, 0.2)` | 阴影颜色                |
+| `--shadow-offset` | `0 4px 8px` | 阴影偏移量               |
+| `--shadow-blur`   | `8px`     | 阴影模糊半径              |
+
+## 💡 注意事项
+
+1. **动画性能**：建议避免在复杂布局中使用过多标签
+2. **响应式适配**：通过 `min-width` 媒体查询实现移动端优化
+3. **无障碍**：确保 `aria-label` 正确设置，提升可访问性
+
+## 📱 移动端示例
+
+```tsx
+// 移动端优化配置
+<ElevatedSlopeTabs
+style={{ padding: '0 16px' }}
+rootStyle={{ maxWidth: '600px', margin: '0 auto' }}
+/>
+```
+### 🚀 更多示例
+
+- [完整示例代码](https://github.com/0418wangweijie/wang-tabs/blob/main/examples/ElevatedSlopeTabs.tsx)
+- [主题定制指南](https://wang-tabs-docs.vercel.app/guide/theme)
+
+### 📢 反馈
+
+如果有任何问题或建议，欢迎在 [GitHub Issues](https://github.com/0418wangweijie/wang-tabs/issues) 反馈。
+
+## ElevatedSlopeTabs 演示
+
+```tsx
+import React, { useState } from "react";
+import { ElevatedSlopeTabs } from "wang-tabs";
+
+const ElevatedSlopeTabsDemo = () => {
+const [activeTab, setActiveTab] = useState<string>('tab1');
+const [activeTab2, setActiveTab2] = useState<string>('tab1');
+
+    console.log(import.meta.env.NODE_ENV);
+    console.log(import.meta.env.VITE_API_STORYBOOK_URL);
+
+    const tabList = [
+        {
+            name: 'tab1',
+            label: 'Tab 1',
+            content: 'Content 1'
+        },
+        {
+            name: 'tab2',
+            label: 'Tab 2',
+            content: 'Content 2'
+        }
+    ];
+
+    const tabList2 = [
+        {
+            name: 'tab1',
+            label: 'Tab 1',
+            content: 'Content 1'
+        },
+        {
+            name: 'tab2',
+            label: 'Tab 2',
+            content: 'Content 2'
+        },
+        {
+            name: 'tab3',
+            label: 'Tab 3',
+            content: 'Content 3'
+        }
+    ];
+
+    return (
+        <div>
+            <div>
+                <ElevatedSlopeTabs tabList={tabList} activeTab={activeTab} onTabChange={setActiveTab} />
+                <div>
+                    {tabList.filter((tab) => tab.name === activeTab).map((tab) => tab.content)}
+                </div>
+            </div>
+            {/*多个标签以及重置样式展示效果*/}
+            <div>
+                <ElevatedSlopeTabs tabList={tabList2} activeTab={activeTab2} onTabChange={setActiveTab2} rootStyle={{
+                    '--active-color': '#003eb3'
+                }} />
+                <div>
+                    {tabList2.filter((tab) => tab.name === activeTab2).map((tab) => tab.content)}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ElevatedSlopeTabsDemo;
+```
+<script setup>
+import { ref } from 'vue';
+
+const storybookUrl = ref(import.meta.env.VITE_API_STORYBOOK_URL);
+</script>
+
+<iframe
+:src="`${storybookUrl}/iframe.html?globals=viewport%3Amobile&viewMode=story&id=elevatedslopetabs--primary`"
+style="width: 100%; height:600px; border: none"
+title="ElevatedSlopeTabs 演示"
+>
+未加载
+</iframe>
+
+
+### 解释性内容
+
+1. **组件概述**：描述了 `ElevatedSlopeTabs` 组件的主要特性和功能。
+2. **使用场景**：列出了组件适用的场景。
+3. **基础用法**：提供了使用 `ElevatedSlopeTabs` 组件的基本示例代码。
+4. **API 文档**：详细列出了组件的 Props 和 CSS 变量。
+5. **注意事项**：提供了使用组件时需要注意的事项。
+6. **移动端示例**：展示了如何在移动端优化配置 `ElevatedSlopeTabs` 组件。
+7. **更多示例**：提供了更多示例代码和主题定制指南的链接。
+8. **反馈**：提供了反馈渠道。
+9. **ElevatedSlopeTabs 演示**：展示了 `ElevatedSlopeTabs` 组件的实时演示。
+
+通过这种方式，你可以确保 `elevated-slope-tabs.md` 文档结构清晰、内容详实，并且能够正确展示组件的使用方法和效果。

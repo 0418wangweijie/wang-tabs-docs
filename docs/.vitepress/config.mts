@@ -50,7 +50,8 @@ export default withMermaid({
           text: '组件总览',
           items: [
             {text: '组件总览', link: '/component'},
-            {text: 'SlopeTabs组件', link: '/component/slope-tabs'}
+            {text: 'SlopeTabs组件', link: '/component/slope-tabs'},
+            {text: 'ElevatedSlopeTabs组件', link: '/component/elevated-slope-tabs'},
           ]
         }
       ]
