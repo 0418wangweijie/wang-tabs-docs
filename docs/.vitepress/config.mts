@@ -15,6 +15,10 @@ console.log('mode:', mode, envDir);
 const env = loadEnv(mode, envDir);
 
 export default withMermaid({
+  vue: {
+    // 配置 Vue 插件
+    // ...
+  },
   vite: {
     plugins: [viteReact()],
     define: {
@@ -57,8 +61,3 @@ export default withMermaid({
     ]
   }
 });
-
-// https://vitepress.dev/reference/site-config
-// export default defineConfig({
-//
-// })

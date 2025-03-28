@@ -24,7 +24,7 @@ import {SlopeTabs, Tab} from 'wang-tabs';
 
 const tabs: Tab[] = [
     {name: 'tab1', label: '标签 1'},
-    {name: 'tab2', label: '标签 2‘},
+    {name: 'tab2', label: '标签 2'}
 ];
 
 <SlopeTabs
@@ -33,7 +33,6 @@ const tabs: Tab[] = [
     onTabChange={(tab) => console.log(tab)}
 />
 ```
-
 
 ## 📖 API 文档
 
@@ -49,11 +48,14 @@ const tabs: Tab[] = [
 
 ### CSS 变量
 
-| CSS 变量          | 默认值  | 描述                     |
-|-----------------|-------|------------------------|
-| `--active-color`  | -     | 激活标签的颜色               |
-| `--font-size`     | -     | 字体大小                   |
-| `--border-radius` | -     | 边框圆角                 |
+| CSS 变量名          | 默认值      | 描述                     |
+|-------------------|-----------|------------------------|
+| `--tab-height`    | `152px`   | 选项卡高度                 |
+| `--active-color`  | `#4096ff` | 激活状态背景颜色             |
+| `--primary-color` | `#bae0ff` | 默认状态背景颜色             |
+| `--font-color`    | `#fff`    | 文字颜色                   |
+| `--border-radius` | `35px`    | 圆角大小                  |
+| `--font-size`     | `44px`    | 文字大小                  |
 
 ## 💡 注意事项
 
@@ -90,6 +92,8 @@ const SlopeTabsDemo = () => {
     const [activeTab, setActiveTab] = useState<string>('tab1')
     const [activeTab2, setActiveTab2] = useState<string>('tab1')
 
+    console.log(import.meta.env.NODE_ENV)
+    console.log(import.meta.env.VITE_API_STORYBOOK_URL)
     const tabList = [
         {
             name: 'tab1',
@@ -144,15 +148,21 @@ const SlopeTabsDemo = () => {
 
 export default SlopeTabsDemo
 ```
-测试
-{ import.meta.env.VITE_DEV }
 
+<script setup>
+import { ref } from 'vue'
 
+const storybookUrl = ref(process.env.VITE_API_STORYBOOK_URL);
+
+</script>
 
 <iframe
-src="{{VITE_API_STORYBOOK_URL}}/iframe.html?globals=viewport%3Amobile&viewMode=story&id=slopetabs--primary"
+:src="`${storybookUrl}/iframe.html?globals=viewport%3Amobile&viewMode=story&id=slopetabs--primary`"
 style="width: 100%; height:600px; border: none"
 title="SlopeTabs 演示"
-> 
+>
+未加载
 </iframe>
+
+
 
