@@ -152,30 +152,15 @@ const [activeTab2, setActiveTab2] = useState<string>('tab1');
 export default ElevatedSlopeTabsDemo;
 ```
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const storybookUrl = ref(import.meta.env.VITE_API_STORYBOOK_URL);
+const storybookUrl = ref(process.env.VITE_API_STORYBOOK_URL);
 </script>
 
 <iframe
-:src="`${storybookUrl}/iframe.html?globals=viewport%3Amobile&viewMode=story&id=elevatedslopetabs--primary`"
+:src="`${storybookUrl}/iframe.html?viewMode=story&id=elevatedslopetabs--primary&globals=&args=`"
 style="width: 100%; height:600px; border: none"
 title="ElevatedSlopeTabs 演示"
 >
 未加载
 </iframe>
-
-
-### 解释性内容
-
-1. **组件概述**：描述了 `ElevatedSlopeTabs` 组件的主要特性和功能。
-2. **使用场景**：列出了组件适用的场景。
-3. **基础用法**：提供了使用 `ElevatedSlopeTabs` 组件的基本示例代码。
-4. **API 文档**：详细列出了组件的 Props 和 CSS 变量。
-5. **注意事项**：提供了使用组件时需要注意的事项。
-6. **移动端示例**：展示了如何在移动端优化配置 `ElevatedSlopeTabs` 组件。
-7. **更多示例**：提供了更多示例代码和主题定制指南的链接。
-8. **反馈**：提供了反馈渠道。
-9. **ElevatedSlopeTabs 演示**：展示了 `ElevatedSlopeTabs` 组件的实时演示。
-
-通过这种方式，你可以确保 `elevated-slope-tabs.md` 文档结构清晰、内容详实，并且能够正确展示组件的使用方法和效果。
