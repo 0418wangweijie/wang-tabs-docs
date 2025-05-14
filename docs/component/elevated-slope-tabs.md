@@ -40,25 +40,63 @@ onTabChange={(tab) => console.log(tab)}
 
 | 参数名           | 类型                      | 默认值 | 描述      |
 |---------------|-------------------------|-----|---------|
-| `tabList`     | `Tab[]`                 | -   | 选项卡列表   |
+| `tabList`     | `TabItem[]`                 | -   | 选项卡列表   |
 | `activeTab`   | `string`                | -   | 当前激活的标签 |
 | `onTabChange` | `(tab: string) => void` | -   | 标签切换回调  |
 | `style`       | `CSSProperties`         | -   | 容器样式    |
 | `rootStyle`   | `CSSProperties`         | -   | 根元素样式   |
+| `children`    | `ReactNode`             | -   | 子元素      |
+
+### TabItem
+
+| 参数名     | 类型     | 默认值 | 描述     |
+|---------|--------|-----|--------|
+| `key`  | `string` | `number` | -   | key值    |
+| `name`  | `string` | -   | 标签名称    |
+| `label` | `string` | -   | 标签显示文本 |
+| `content`  | `string` | -   | 标签下面内容    |
+| `render`  | `JSX.Element` | -   | tabItem标签内容自定义    |
+
 
 ### CSS 变量
 
-| CSS 变量名          | 默认值      | 描述                     |
-|-------------------|-----------|------------------------|
-| `--tab-height`    | `152px`   | 选项卡高度                 |
-| `--active-color`  | `#4096ff` | 激活状态背景颜色             |
-| `--primary-color` | `#bae0ff` | 默认状态背景颜色             |
-| `--font-color`    | `#fff`    | 文字颜色                   |
-| `--border-radius` | `35px`    | 圆角大小                  |
-| `--font-size`     | `44px`    | 文字大小                  |
-| `--shadow-color`  | `rgba(0, 0, 0, 0.2)` | 阴影颜色                |
-| `--shadow-offset` | `0 4px 8px` | 阴影偏移量               |
-| `--shadow-blur`   | `8px`     | 阴影模糊半径              |
+根据提供的 CSS 代码，以下是 ElevatedSlopeTabs 组件的 CSS 变量表：
+
+| CSS 变量名 | 默认值 | 描述 |
+|------------|-------|------|
+| `--tabs-bg` | `linear-gradient(#cdd9fe, #e2e9fd)` | 选项卡背景渐变色 |
+| `--tabs-height` | `50px` | 选项卡高度 |
+| `--tabs-radius` | `8px` | 选项卡圆角大小 |
+| `--tab-font-size` | `16px` | 选项卡文字大小 |
+| `--tab-clip-path-before` | `path('M 0,50 C 25,50 25,0 50,0 L 50, 50 Z')` | 左侧斜角裁剪路径 |
+| `--tab-clip-path-after` | `path('M 0,0 C 25,0 25,50 50,50 L 0, 50 Z')` | 右侧斜角裁剪路径 |
+| `--active-before-after-width` | `var(--tabs-height)` | 激活状态前后伪元素宽度 |
+| `--active-filter` | `''` | 激活状态过滤器效果 |
+| `--active-transition` | `''` | 激活状态过渡动画 |
+| `--active-top` | `-6px` | 激活状态顶部偏移量 |
+| `--active-bg-color` | `#fff` | 激活状态背景颜色 |
+| `--active-height` | `var(--tabs-height)` | 激活状态高度 |
+| `--content-top` | `var(--active-top)` | 内容区域顶部偏移量 |
+| `--tab-width` | `calc(100% / var(--tab-count))` | 选项卡宽度 |
+| `--active-left-radius` | 未指定 | 激活状态左侧圆角 |
+| `--active-right-radius` | 未指定 | 激活状态右侧圆角 |
+| `--active-before-display` | `flex` | 控制左侧伪元素显示 |
+| `--active-after-display` | `flex` | 控制右侧伪元素显示 |
+
+这些 CSS 变量可以通过 `rootStyle` 属性进行自定义，例如：
+
+```tsx
+<ElevatedSlopeTabs 
+  tabList={tabList} 
+  activeTab={activeTab} 
+  onTabChange={setActiveTab} 
+  rootStyle={{
+    '--tabs-bg': 'linear-gradient(#e6f7ff, #bae7ff)',
+    '--active-bg-color': '#ffffff',
+    '--tab-font-size': '18px'
+  }} 
+/>
+```
 
 ## 💡 注意事项
 

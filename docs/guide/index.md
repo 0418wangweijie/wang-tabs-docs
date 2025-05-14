@@ -76,6 +76,28 @@ const App = () => {
 />
 ```
 
+## 环境变量配置
+
+wang-tabs 支持通过环境变量配置 px 到 rem 的转换功能：
+
+| 环境变量 | 类型 | 默认值 | 描述 |
+|---------------|-------|----|----------------------------------------------|
+| `ENABLE_PX_TO_REM` | `boolean` | `true` | 是否启用 px 到 rem 的自动转换 |
+| `PX_TO_REM_ROOT_VALUE` | `number` | `16` | rem 转换的基准值 |
+
+### 配置示例
+
+```bash
+# 启用 px 到 rem 转换，基准值为 16px
+ENABLE_PX_TO_REM=true PX_TO_REM_ROOT_VALUE=16 npm start
+
+# 禁用 px 到 rem 转换
+ENABLE_PX_TO_REM=false npm start
+
+# 自定义基准值为 75px（适用于移动端）
+ENABLE_PX_TO_REM=true PX_TO_REM_ROOT_VALUE=75 npm start
+```
+
 
 ## 开发与贡献
 
